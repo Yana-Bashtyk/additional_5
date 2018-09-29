@@ -1,20 +1,20 @@
 module.exports = function check(str, bracketsConfig) {
-  var stackBrackets = [];
-  var openingB = [], closingB = [];
+  const stackBrackets = [];
+  const openingB = [], closingB = [];
 
   if (str.length % 2 != 0){
     return false;
   }
   //create arrays for opening and closing brackets separately
-  for (var i=0; i<bracketsConfig.length; i++){
+  for (let i=0, brLeng = bracketsConfig.length; i<brLeng; i++){
       openingB.push(bracketsConfig[i][0]);
       closingB.push(bracketsConfig[i][1]);
   }
 
-  for (var j=0; j < str.length; j++){
-    for (var k=0; k < openingB.length; k++){
+  for (let j=0, strLeng = str.length; j < strLeng; j++){
+    for (let k=0, opLeng = openingB.length; k < opLeng; k++){
       if (str[j] == openingB[k] && openingB[k] == closingB[k]){  //if brackets are the same
-        if(str[j] == stackBrackets[stackBrackets.length-1]){    
+        if(str[j] == stackBrackets[stackBrackets.length-1]){
           stackBrackets.pop();
         }
         else {
@@ -38,5 +38,4 @@ module.exports = function check(str, bracketsConfig) {
   else {
     return false;
   }
-
 }
